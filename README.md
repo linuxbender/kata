@@ -1,2 +1,2 @@
 # kata
-Kata Repository
+kata projects - experiment - explore - test - research
