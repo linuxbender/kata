@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-backend
+  template:
+    metadata:
+      labels:
+        app: order-backend
+    spec:
+      containers:
+        - name: order-backend
+          image: your-docker-repo/order-backend:1.0.0
+          ports:
+            - containerPort: 8081

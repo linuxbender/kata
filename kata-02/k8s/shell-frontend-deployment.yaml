@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shell-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shell-frontend
+  template:
+    metadata:
+      labels:
+        app: shell-frontend
+    spec:
+      containers:
+        - name: shell-frontend
+          image: your-docker-repo/shell-frontend:1.0.0
+          ports:
+            - containerPort: 3000

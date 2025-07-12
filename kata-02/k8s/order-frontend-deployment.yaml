@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-frontend
+  template:
+    metadata:
+      labels:
+        app: order-frontend
+    spec:
+      containers:
+        - name: order-frontend
+          image: your-docker-repo/order-frontend:1.0.0
+          ports:
+            - containerPort: 3001

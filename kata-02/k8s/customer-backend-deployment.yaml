@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-backend
+  template:
+    metadata:
+      labels:
+        app: customer-backend
+    spec:
+      containers:
+        - name: customer-backend
+          image: your-docker-repo/customer-backend:1.0.0  # Ersetze dies mit deinem Docker-Image
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"  # Optional, je nach deiner Konfiguration

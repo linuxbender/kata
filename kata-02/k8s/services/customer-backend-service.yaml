@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-backend-service
+spec:
+  selector:
+    app: customer-backend
+  ports:
+    - protocol: TCP
+      port: 8082      # Port, auf dem der Service lauscht
+      targetPort: 8082 # Der Port im Container

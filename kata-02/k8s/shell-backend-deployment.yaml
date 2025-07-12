@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shell-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shell-backend
+  template:
+    metadata:
+      labels:
+        app: shell-backend
+    spec:
+      containers:
+        - name: shell-backend
+          image: your-docker-repo/shell-backend:1.0.0
+          ports:
+            - containerPort: 8080

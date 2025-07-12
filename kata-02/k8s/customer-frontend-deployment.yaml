@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-frontend
+  template:
+    metadata:
+      labels:
+        app: customer-frontend
+    spec:
+      containers:
+        - name: customer-frontend
+          image: your-docker-repo/customer-frontend:1.0.0  # Ersetze dies mit deinem Docker-Image
+          ports:
+            - containerPort: 3002
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://customer-backend-service:8082"  # URL zum Backend Service
