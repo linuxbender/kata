@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Kata02Application {
+public class SharedApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Kata02Application.class, args);
+		SpringApplication.run(SharedApplication.class, args);
 	}
 
 }
