@@ -5,7 +5,7 @@ FROM openjdk:24-jdk-slim
 WORKDIR /app
 
 # Kopiere die JAR-Datei (dies geht davon aus, dass du die JAR mit Maven/Gradle gebaut hast)
-COPY target/customer-backend.jar customer-backend.jar
+COPY target/customer-backend-*-SNAPSHOT.jar customer-backend.jar
 
 # Setze den Befehl, der beim Starten des Containers ausgeführt wird
 ENTRYPOINT ["java", "-jar", "customer-backend.jar"]
