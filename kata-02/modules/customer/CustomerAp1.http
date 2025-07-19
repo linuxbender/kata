@@ -5,7 +5,7 @@ GET https://localhost:8082/api/v1/customers
 GET https://localhost:8082/api/v1/customers/10
 
 ### PUT request to customer-backend
-PUT https://localhost:8082/api/v1/customers/3
+PUT https://localhost:8082/api/v1/customers/2
 Content-Type: application/json
 
 {
@@ -21,6 +21,6 @@ Content-Type: application/json
 }
 
 ### DELETE request to customer-backend
-DELETE https://localhost:8082/api/v1/customers/2
+DELETE https://localhost:8082/api/v1/customers/3
 
 
