@@ -1,0 +1,4 @@
+### GET request to customer-backend
+GET https://localhost:8082/api/v1/orders
+###
+
