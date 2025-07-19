@@ -1,5 +1,5 @@
 # Verwende ein offizielles Node.js-Image als Basis
-FROM node:16-slim
+FROM node:24-slim
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /app
@@ -20,4 +20,4 @@ RUN npm run build
 CMD ["npm", "run", "dev"]
 
 # Der Port, auf dem das Frontend läuft
-EXPOSE 3000
+EXPOSE 3002
