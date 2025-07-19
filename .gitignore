@@ -25,7 +25,7 @@ replay_pid*
 *.pem
 *.p12
 /kata-01/app/backend/target/
-/kata-02/shell/backend/target/
+/kata-02/modules/shell/backend/target/
 /kata-02/modules/customer/backend/target/
 /kata-02/modules/shared/backend/target/
 /kata-02/modules/order/backend/target/

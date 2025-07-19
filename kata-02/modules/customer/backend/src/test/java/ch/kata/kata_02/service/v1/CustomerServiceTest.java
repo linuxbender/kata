@@ -1,6 +1,7 @@
 package ch.kata.kata_02.service.v1;
 
 import ch.kata.kata_02.dto.v1.CustomerDto;
+import ch.kata.kata_02.exception.v1.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +55,7 @@ class CustomerServiceTest {
 
     @Test
     void getCustomerById_shouldThrowException_whenCustomerDoesNotExist() {
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> customerService.getCustomerById(3L));
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> customerService.getCustomerById(3L));
         assertEquals("Customer not found", exception.getMessage());
     }
 
@@ -78,7 +79,7 @@ class CustomerServiceTest {
 
         CustomerDto customer = new CustomerDto(3L, "Non Existent");
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> customerService.updateCustomer(customer));
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> customerService.updateCustomer(customer));
         assertEquals("Customer not found", exception.getMessage());
     }
 
@@ -103,7 +104,7 @@ class CustomerServiceTest {
 
         customerService.deleteCustomer(customer);
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> customerService.getCustomerById(1L));
+        NotFoundException exception = assertThrows(NotFoundException.class, () -> customerService.getCustomerById(1L));
         assertEquals("Customer not found", exception.getMessage());
     }
 
@@ -131,5 +132,49 @@ class CustomerServiceTest {
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> customerService.deleteCustomer(customer));
         assertEquals("Customer or customer ID cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void createCustomer_shouldCreateNewCustomerWithGeneratedId() {
+        CustomerDto newCustomer = new CustomerDto(null, "Alice Johnson");
+
+        CustomerDto createdCustomer = customerService.createCustomer(newCustomer);
+
+        assertNotNull(createdCustomer, "Customer should not be null.");
+        assertNotNull(createdCustomer.getId(), "Customer ID should be generated.");
+        assertEquals("Alice Johnson", createdCustomer.getName(), "Customer name should be 'Alice Johnson'.");
+
+        assertTrue(createdCustomer.getId() > 0, "Customer ID should be greater than 0.");
+    }
+
+    @Test
+    void createCustomer_shouldThrowExceptionWhenIdIsAlreadySet() {
+        CustomerDto customerWithId = new CustomerDto(1L, "Bob Brown");
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            customerService.createCustomer(customerWithId);
+        });
+
+        assertEquals("CustomerDto cannot be null and ID must not be set for creation", exception.getMessage());
+    }
+
+    @Test
+    void createCustomer_shouldThrowExceptionWhenCustomerDtoIsNull() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            customerService.createCustomer(null);
+        });
+
+        assertEquals("CustomerDto cannot be null and ID must not be set for creation", exception.getMessage());
+    }
+
+    @Test
+    void createCustomer_shouldIncrementIdCorrectly() {
+        CustomerDto firstCustomer = new CustomerDto(null, "Tom Taylor");
+        customerService.createCustomer(firstCustomer);
+
+        CustomerDto secondCustomer = new CustomerDto(null, "Anna Adams");
+        CustomerDto createdSecondCustomer = customerService.createCustomer(secondCustomer);
+
+        assertEquals(4L, createdSecondCustomer.getId(), "Second customer's ID should be 4.");
     }
 }

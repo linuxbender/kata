@@ -23,10 +23,14 @@ class CustomerControllerTest {
     @Mock
     private CustomerService customerService;
     private CustomerController customerController;
+    private CustomerDto validCustomer;
+    private CustomerDto customerWithId;
 
     @BeforeEach
     void setUp() {
         customerController = new CustomerController(customerService);
+        validCustomer = new CustomerDto(null, "Alice Johnson");
+        customerWithId = new CustomerDto(1L, "Bob Brown");
     }
 
     @Test
@@ -118,4 +122,52 @@ class CustomerControllerTest {
         assertEquals(404, response.getStatusCode().value());
         verify(customerService, never()).deleteCustomer(any());
     }
+
+    @Test
+    void createCustomer_shouldReturnCreatedCustomerWhenValidCustomer() {
+        CustomerDto createdCustomer = new CustomerDto(1L, "Alice Johnson");
+
+        when(customerService.createCustomer(validCustomer)).thenReturn(createdCustomer);
+
+        ResponseEntity<CustomerDto> result = customerController.createCustomer(validCustomer);
+
+        assertNotNull(result.getBody());
+        assertEquals(1L, result.getBody().getId());
+        assertEquals("Alice Johnson", result.getBody().getName());
+
+        verify(customerService, times(1)).createCustomer(validCustomer);
+    }
+
+    @Test
+    void createCustomer_shouldReturnNullWhenIdIsProvided() {
+        ResponseEntity<CustomerDto> result = customerController.createCustomer(customerWithId);
+
+        assertEquals(400, result.getStatusCode().value());
+
+        verify(customerService, never()).createCustomer(customerWithId);
+    }
+
+    @Test
+    void createCustomer_shouldReturnNullWhenCustomerDtoHasEmptyName() {
+        CustomerDto invalidCustomer = new CustomerDto(null, "");
+
+        ResponseEntity<CustomerDto> result = customerController.createCustomer(invalidCustomer);
+
+        assertEquals(400, result.getStatusCode().value());
+
+        verify(customerService, never()).createCustomer(invalidCustomer);
+    }
+
+    @Test
+    void createCustomer_shouldReturnNullWhenCustomerDtoHasNullName() {
+        CustomerDto invalidCustomer = new CustomerDto(null, null);
+
+        ResponseEntity<CustomerDto> result = customerController.createCustomer(invalidCustomer);
+
+        assertEquals(400, result.getStatusCode().value());
+
+        verify(customerService, never()).createCustomer(invalidCustomer);
+    }
+
+
 }

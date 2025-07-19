@@ -5,7 +5,7 @@
     <file url="file://$PROJECT_DIR$/kata-02/modules/customer/backend/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kata-02/modules/order/backend/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kata-02/modules/shared/backend/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/kata-02/shell/backend/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kata-02/modules/shell/backend/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kata-02/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kata-02/src/main/resources" charset="UTF-8" />
   </component>

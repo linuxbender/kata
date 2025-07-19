@@ -48,6 +48,26 @@ public class CustomerController {
     }
 
     /**
+     * Creates a new customer.
+     *
+     * @param customerDto the CustomerDto object containing customer information.
+     * @return a ResponseEntity containing the created CustomerDto object, or a 400 Bad Request if the ID is provided.
+     */
+    @PostMapping
+    ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customerDto) {
+        if (customerDto == null ||
+                customerDto.getId() != null ||
+                customerDto.getName() == null ||
+                customerDto.getName().isEmpty()) {
+            log.warn("Customer ID should not be provided for creation. Provided ID: {}", customerDto.getId());
+            return ResponseEntity.badRequest().build();
+        }
+
+        CustomerDto createdCustomer = customerService.createCustomer(customerDto);
+        return ResponseEntity.status(201).body(createdCustomer);
+    }
+
+    /**
      * Updates an existing customer.
      *
      * @param id          the ID of the customer to update.
