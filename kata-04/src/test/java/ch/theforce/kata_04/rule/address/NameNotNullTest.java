@@ -39,7 +39,7 @@ class NameNotNullTest {
     @DisplayName("Should pass validation when both first name and last name are provided")
     void testValidationPassesWhenBothNamesProvided() {
         // Arrange
-        addressDto.setFristName("John");
+        addressDto.setFirstName("John");
         addressDto.setLastName("Doe");
 
         // Act
@@ -58,7 +58,7 @@ class NameNotNullTest {
     @DisplayName("Should fail validation when both first name and last name are null")
     void testValidationFailsWhenBothNamesAreNull() {
         // Arrange
-        addressDto.setFristName(null);
+        addressDto.setFirstName(null);
         addressDto.setLastName(null);
 
         // Act
@@ -70,7 +70,7 @@ class NameNotNullTest {
         assertThat(invalid.errors()).hasSize(2);
         assertThat(invalid.errors())
                 .containsExactlyInAnyOrder(
-                        new ValidationError("fristName", "First name must not be null"),
+                        new ValidationError("firstName", "First name must not be null"),
                         new ValidationError("lastName", "Last name must not be null")
                 );
     }
@@ -83,7 +83,7 @@ class NameNotNullTest {
     @DisplayName("Should fail validation when only first name is null")
     void testValidationFailsWhenOnlyFirstNameIsNull() {
         // Arrange
-        addressDto.setFristName(null);
+        addressDto.setFirstName(null);
         addressDto.setLastName("Doe");
 
         // Act
@@ -94,7 +94,7 @@ class NameNotNullTest {
         Invalid<AddressDto> invalid = (Invalid<AddressDto>) result;
         assertThat(invalid.errors()).hasSize(1);
         assertThat(invalid.errors().getFirst())
-                .isEqualTo(new ValidationError("fristName", "First name must not be null"));
+                .isEqualTo(new ValidationError("firstName", "First name must not be null"));
     }
 
     /**
@@ -105,7 +105,7 @@ class NameNotNullTest {
     @DisplayName("Should fail validation when only last name is null")
     void testValidationFailsWhenOnlyLastNameIsNull() {
         // Arrange
-        addressDto.setFristName("John");
+        addressDto.setFirstName("John");
         addressDto.setLastName(null);
 
         // Act
@@ -127,7 +127,7 @@ class NameNotNullTest {
     @DisplayName("Should pass validation when names are empty strings")
     void testValidationPassesWhenNamesAreEmpty() {
         // Arrange
-        addressDto.setFristName("");
+        addressDto.setFirstName("");
         addressDto.setLastName("");
 
 

@@ -124,7 +124,7 @@ class ValidationEngineIntegrationTest {
     void testValidationEngineExecutesAddressRules() {
         // Arrange
         AddressDto validAddress = new AddressDto();
-        validAddress.setFristName("John");
+        validAddress.setFirstName("John");
         validAddress.setLastName("Doe");
         validAddress.setStreet("123 Main St");
         validAddress.setPostalCode("12345");
@@ -147,7 +147,7 @@ class ValidationEngineIntegrationTest {
     void testValidationEngineExecutesAddressRulesWithErrors() {
         // Arrange
         AddressDto invalidAddress = new AddressDto();
-        invalidAddress.setFristName(null);  // Null first name
+        invalidAddress.setFirstName(null);  // Null first name
         invalidAddress.setLastName(null);   // Null last name
         invalidAddress.setStreet("123 Main St");
         invalidAddress.setPostalCode("12345");
@@ -161,7 +161,7 @@ class ValidationEngineIntegrationTest {
         Invalid<AddressDto> invalid = (Invalid<AddressDto>) result;
         assertThat(invalid.errors()).hasSize(2)
                 .extracting("field")
-                .containsExactlyInAnyOrder("fristName", "lastName");
+                .containsExactlyInAnyOrder("firstName", "lastName");
     }
 
     /**

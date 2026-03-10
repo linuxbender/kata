@@ -97,7 +97,7 @@ class CashFlowServiceImplTest {
         List<ValidationError> errors = List.of(
                 new ValidationError("amount", "Amount must be greater than 100"),
                 new ValidationError("currencyCd", "Currency must be USD, EUR, or CHF"),
-                new ValidationError("fristName", "First name must not be null")
+                new ValidationError("firstName", "First name must not be null")
         );
         ValidationResult<CashFlowDto> invalidResult = new Invalid<>(errors);
         when(validationEngineMock.runParallel(cashFlowDto))

@@ -51,7 +51,7 @@ class CashFlowControllerIntegrationTest {
 
         // Valid Address DTO
         validAddressDto = new AddressDto();
-        validAddressDto.setFristName("John");
+        validAddressDto.setFirstName("John");
         validAddressDto.setLastName("Doe");
         validAddressDto.setStreet("123 Main St");
         validAddressDto.setPostalCode("12345");

@@ -38,7 +38,7 @@ class AddressServiceImplTest {
     @BeforeEach
     void setUp() {
         addressDto = new AddressDto();
-        addressDto.setFristName("John");
+        addressDto.setFirstName("John");
         addressDto.setLastName("Doe");
         addressDto.setStreet("123 Main St");
         addressDto.setPostalCode("12345");
@@ -74,7 +74,7 @@ class AddressServiceImplTest {
     void testSaveAddressWithSingleValidationError() {
         // Arrange
         List<ValidationError> errors = List.of(
-                new ValidationError("fristName", "First name must not be null")
+                new ValidationError("firstName", "First name must not be null")
         );
         ValidationResult<AddressDto> invalidResult = new Invalid<>(errors);
         when(validationEngineMock.runParallel(addressDto))
@@ -96,7 +96,7 @@ class AddressServiceImplTest {
     void testSaveAddressWithMultipleValidationErrors() {
         // Arrange
         List<ValidationError> errors = List.of(
-                new ValidationError("fristName", "First name must not be null"),
+                new ValidationError("firstName", "First name must not be null"),
                 new ValidationError("lastName", "Last name must not be null")
         );
         ValidationResult<AddressDto> invalidResult = new Invalid<>(errors);

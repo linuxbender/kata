@@ -39,7 +39,7 @@ class AddressControllerIntegrationTest {
     void setUp() {
         // Valid Address DTO
         validAddressDto = new AddressDto();
-        validAddressDto.setFristName("John");
+        validAddressDto.setFirstName("John");
         validAddressDto.setLastName("Doe");
         validAddressDto.setStreet("123 Main St");
         validAddressDto.setPostalCode("12345");
@@ -54,7 +54,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with valid first and last name")
     void testPostAddressWithValidNames() throws Exception {
         // Arrange
-        validAddressDto.setFristName("John");
+        validAddressDto.setFirstName("John");
         validAddressDto.setLastName("Doe");
 
         // Act & Assert
@@ -73,7 +73,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with special characters in names")
     void testPostAddressWithSpecialCharacters() throws Exception {
         // Arrange
-        validAddressDto.setFristName("Jean-Pierre");
+        validAddressDto.setFirstName("Jean-Pierre");
         validAddressDto.setLastName("O'Connor");
 
         // Act & Assert
@@ -92,7 +92,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with unicode characters in names")
     void testPostAddressWithUnicodeCharacters() throws Exception {
         // Arrange
-        validAddressDto.setFristName("Jörg");
+        validAddressDto.setFirstName("Jörg");
         validAddressDto.setLastName("Müller");
 
         // Act & Assert
@@ -111,7 +111,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should handle POST /address with null first name")
     void testPostAddressWithNullFirstName() throws Exception {
         // Arrange
-        validAddressDto.setFristName(null);
+        validAddressDto.setFirstName(null);
         validAddressDto.setLastName("Doe");
 
         // Act & Assert
@@ -129,7 +129,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should handle POST /address with null last name")
     void testPostAddressWithNullLastName() throws Exception {
         // Arrange
-        validAddressDto.setFristName("John");
+        validAddressDto.setFirstName("John");
         validAddressDto.setLastName(null);
 
         // Act & Assert
@@ -147,7 +147,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should handle POST /address with both names null")
     void testPostAddressWithBothNamesNull() throws Exception {
         // Arrange
-        validAddressDto.setFristName(null);
+        validAddressDto.setFirstName(null);
         validAddressDto.setLastName(null);
 
         // Act & Assert
@@ -165,7 +165,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with empty string names")
     void testPostAddressWithEmptyStringNames() throws Exception {
         // Arrange
-        validAddressDto.setFristName("");
+        validAddressDto.setFirstName("");
         validAddressDto.setLastName("");
 
         // Act & Assert
@@ -184,7 +184,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with whitespace names")
     void testPostAddressWithWhitespaceNames() throws Exception {
         // Arrange
-        validAddressDto.setFristName("   ");
+        validAddressDto.setFirstName("   ");
         validAddressDto.setLastName("   ");
 
         // Act & Assert
@@ -203,7 +203,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with complete address information")
     void testPostAddressWithCompleteInformation() throws Exception {
         // Arrange
-        validAddressDto.setFristName("John");
+        validAddressDto.setFirstName("John");
         validAddressDto.setLastName("Doe");
         validAddressDto.setStreet("123 Main St");
         validAddressDto.setPostalCode("12345");
@@ -225,7 +225,7 @@ class AddressControllerIntegrationTest {
     @DisplayName("Should accept POST /address with long names")
     void testPostAddressWithLongNames() throws Exception {
         // Arrange
-        validAddressDto.setFristName("Christopher Alexander");
+        validAddressDto.setFirstName("Christopher Alexander");
         validAddressDto.setLastName("von Humboldt-Albertus");
 
         // Act & Assert

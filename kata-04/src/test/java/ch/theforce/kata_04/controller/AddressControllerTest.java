@@ -38,7 +38,7 @@ class AddressControllerTest {
     @BeforeEach
     void setUp() {
         addressDto = new AddressDto();
-        addressDto.setFristName("John");
+        addressDto.setFirstName("John");
         addressDto.setLastName("Doe");
         addressDto.setStreet("123 Main St");
         addressDto.setPostalCode("12345");
