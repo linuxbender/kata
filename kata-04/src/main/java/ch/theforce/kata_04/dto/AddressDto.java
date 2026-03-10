@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddressDto {
-    private String fristName;
+    private String firstName;
     private String lastName;
     private String street;
     private String postalCode;

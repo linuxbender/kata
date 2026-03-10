@@ -27,8 +27,8 @@ public class NameNotNull implements ValidationRule<AddressDto> {
     public ValidationResult<AddressDto> validate(AddressDto target) {
         List<ValidationError> errors = new ArrayList<>();
 
-        if (Objects.isNull(target.getFristName())) {
-            errors.add(new ValidationError("fristName", "First name must not be null"));
+        if (Objects.isNull(target.getFirstName())) {
+            errors.add(new ValidationError("firstName", "First name must not be null"));
         }
         if (Objects.isNull(target.getLastName())) {
             errors.add(new ValidationError("lastName", "Last name must not be null"));
