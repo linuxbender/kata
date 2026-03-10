@@ -2,6 +2,7 @@ package ch.theforce.kata_04.rule.cashflow;
 
 import ch.theforce.kata_04.dto.CashFlowDto;
 import ch.theforce.kata_04.validation.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * If the currency is not one of these, a validation error is returned.
  */
 @Component
+@Slf4j
 public class AllowedCurrencies implements ValidationRule<CashFlowDto> {
 
     /**
@@ -23,7 +25,7 @@ public class AllowedCurrencies implements ValidationRule<CashFlowDto> {
      */
     @Override
     public ValidationResult<CashFlowDto> validate(CashFlowDto target) {
-
+        log.info("AllowedCurrencies");
         return target.getCurrencyCd().toUpperCase().matches("USD|EUR|CHF")
                 ? new Valid<>(target)
                 : new Invalid<>(List.of(new ValidationError("currencyCd", "Currency must be USD, EUR, or CHF")));

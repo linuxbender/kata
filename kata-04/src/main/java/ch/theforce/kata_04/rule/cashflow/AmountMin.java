@@ -2,6 +2,7 @@ package ch.theforce.kata_04.rule.cashflow;
 
 import ch.theforce.kata_04.dto.CashFlowDto;
 import ch.theforce.kata_04.validation.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.List;
  * than 100. If the amount is 100 or less, a validation error is returned.
  */
 @Component
+@Slf4j
 public class AmountMin implements ValidationRule<CashFlowDto> {
 
     /**
@@ -24,6 +26,7 @@ public class AmountMin implements ValidationRule<CashFlowDto> {
      */
     @Override
     public ValidationResult<CashFlowDto> validate(CashFlowDto target) {
+        log.info("AmountMin");
         return target.getAmount().compareTo(BigDecimal.valueOf(100)) > 0
                 ? new Valid<>(target)
                 : new Invalid<>(List.of(new
