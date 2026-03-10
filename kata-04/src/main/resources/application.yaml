@@ -1,3 +1,6 @@
 spring:
   application:
     name: kata-04
+  threads:
+    virtual:
+      enabled: true
