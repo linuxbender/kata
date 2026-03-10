@@ -4,6 +4,7 @@ import ch.theforce.kata_04.dto.AddressDto;
 import ch.theforce.kata_04.validation.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class NameNotNull implements ValidationRule<AddressDto> {
      */
     @Override
     public ValidationResult<AddressDto> validate(AddressDto target) {
-        List<ValidationError> errors = new java.util.ArrayList<>();
+        List<ValidationError> errors = new ArrayList<>();
 
         if (Objects.isNull(target.getFristName())) {
             errors.add(new ValidationError("fristName", "First name must not be null"));
