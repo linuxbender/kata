@@ -1,5 +1,6 @@
 package ch.theforce.kata_04.validation;
 
+import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.ResolvableType;
 import org.springframework.stereotype.Component;
@@ -17,18 +18,10 @@ import java.util.concurrent.Future;
  * It collects validation errors from all rules and returns a consolidated result.
  */
 @Component
+@AllArgsConstructor
 public class ValidationEngine {
 
     private final ApplicationContext context;
-
-    /**
-     * Constructs a ValidationEngine with the given Spring application context.
-     *
-     * @param context the Spring ApplicationContext used to discover validation rules
-     */
-    public ValidationEngine(ApplicationContext context) {
-        this.context = context;
-    }
 
     /**
      * Runs all validation rules for the given target object in parallel.
@@ -37,10 +30,10 @@ public class ValidationEngine {
      * using virtual threads. Validation errors from all rules are collected and
      * returned as a consolidated result.
      *
-     * @param <T> the type of the target object being validated
+     * @param <T>    the type of the target object being validated
      * @param target the object to validate
      * @return a {@link ValidationResult} containing either the valid target or
-     *         a list of validation errors from all executed rules
+     * a list of validation errors from all executed rules
      */
     @SuppressWarnings("unchecked")
     public <T> ValidationResult<T> runParallel(T target) {
